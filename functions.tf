@@ -2,7 +2,7 @@ resource "google_cloudfunctions_function" "function" {
   name                  = "stop-instance-function"
   description           = "A function to stop a Compute Engine instance"
   available_memory_mb   = 256
-  source_archive_bucket = "rj-function-code-bucket "
+  source_archive_bucket = "rj-function-code-bucket"
   source_archive_object = "function1.zip"
   trigger_http          = true
   runtime               = "python310"

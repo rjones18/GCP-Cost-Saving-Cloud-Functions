@@ -15,9 +15,9 @@
 
 steps:
 - id: 'Upload Zip File to Bucket'
-  name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  name: 'gcr.io/cloud-builders/gsutil'
   entrypoint: 'bash'
-  args: ['-c', 'gcloud components update && gcloud cp function1.zip gs://rj-function-code-bucket']
+  args: ['cp', './function1.zip', 'gs://rj-function-code-bucket/function1.zip']
 - id: 'branch name'
   name: 'alpine'
   entrypoint: 'sh'  
