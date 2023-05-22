@@ -2,7 +2,7 @@ steps:
 # - name: 'gcr.io/cloud-builders/gsutil'
 #   args: ['-m', 'rm', 'gs://rj-function-bucket/source.zip']
 - name: 'ubuntu'
-  args: ['zip', '-r', './function1.zip', '.']
+  args: ['zip', '-r', './function_code', './function1.zip']
   entrypoint: 'bash'
   id: 'zip-source'
 - name: 'gcr.io/cloud-builders/gsutil'
