@@ -14,6 +14,10 @@
 
 
 steps:
+- id: 'Upload Zip File to Bucket'
+  name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: 'bash'
+  args: ['-c', 'gcloud cp function1.zip gs://my-bucket']
 - id: 'branch name'
   name: 'alpine'
   entrypoint: 'sh'  
