@@ -8,3 +8,6 @@ steps:
 - name: 'gcr.io/cloud-builders/gsutil'
   args: ['cp', './function1.zip', 'gs://rj-function-bucket/function1.zip']
   waitFor: ['zip-source']
+options:
+  logging : CLOUD_LOGGING_ONLY
+timeout: 1600s
