@@ -1,19 +1,22 @@
-data "archive_file" "my_function" {
-  type        = "zip"
-  source_file = "function_code/main.py"
-  output_path = "main.zip"
+resource "google_storage_bucket" "bucket" {
+  name     = "rj-function-bucket"
+  location = "us-central1"
 }
 
 resource "google_cloudfunctions_function" "function" {
-  name                  = "ec2-shutdown-function"
-  description           = "My function created with Terraform"
+  name                  = "stop-instance-function"
+  description           = "A function to stop a Compute Engine instance"
   available_memory_mb   = 256
-  source_archive_bucket = "rj-function-code-bucket"
-  source_archive_object = "main.zip"
+  source_archive_bucket = "rj-function-bucket"
+  source_archive_object = "function1.zip"
   trigger_http          = true
-  runtime               = "python39"
+  runtime               = "python310"
 
-  entry_point = "handle_http_request"
+  entry_point = "stop_instance"
+
+  environment_variables = {
+    GCP_PROJECT = "alert-flames-286515"
+  }
 }
 
 resource "google_cloud_scheduler_job" "job" {
@@ -21,7 +24,7 @@ resource "google_cloud_scheduler_job" "job" {
   region           = "us-central1"
   description      = "This job will trigger my-function every day at 8:00 PM"
   schedule         = "0 20 * * *"
-  time_zone        = "America/New_York" # Adjust this to your time zone
+  time_zone        = "America/Chicago" # Adjust this to your time zone
 
   http_target {
     http_method = "GET"
