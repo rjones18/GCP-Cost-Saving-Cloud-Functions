@@ -13,5 +13,3 @@ The Cloud Function is broken down into the architecture below:
 
 ![applications](https://github.com/rjones18/Images/blob/main/Screen%20Shot%202023-05-23%20at%201.11.18%20PM.png)
 
-
-https://github.com/rjones18/Images/blob/main/Screen%20Shot%202023-05-23%20at%201.11.18%20PM.png
